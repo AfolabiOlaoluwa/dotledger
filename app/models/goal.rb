@@ -1,9 +1,9 @@
 class Goal < ActiveRecord::Base
   GOAL_PERIODS = %w(Month Fortnight Week)
 
-  FORTNIGHT_MULTIPLIER = 13.0 / 6
+  FORTNIGHT_MULTIPLIER = Rational(13, 6)
 
-  WEEK_MULTIPLIER = 13.0 / 3
+  WEEK_MULTIPLIER = Rational(13, 3)
 
   belongs_to :category
 
@@ -20,9 +20,9 @@ class Goal < ActiveRecord::Base
     when 'Month'
       amount
     when 'Fortnight'
-      amount * FORTNIGHT_MULTIPLIER
+      (amount * FORTNIGHT_MULTIPLIER).to_f
     when 'Week'
-      amount * WEEK_MULTIPLIER
+      (amount * WEEK_MULTIPLIER).to_f
     end
   end
 end

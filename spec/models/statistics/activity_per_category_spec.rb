@@ -26,7 +26,7 @@ describe Statistics::ActivityPerCategory do
     end
 
     it 'returns the correct adjusted goal amount' do
-      expect(subject.as_json.first['goal']).to eq 100 * Goal::WEEK_MULTIPLIER
+      expect(subject.as_json.first['goal']).to be_within(0.1).of(100 * Goal::WEEK_MULTIPLIER)
     end
 
     it 'returns the correct spent amount' do

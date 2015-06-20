@@ -40,7 +40,7 @@ feature 'Goals', truncate: true, js: true do
     end
 
     it 'shows the goal amounts' do
-      expect(page).to have_content number_to_currency(125 * Goal::WEEK_MULTIPLIER)
+      expect(page).to have_content number_to_currency((125 * Goal::WEEK_MULTIPLIER).to_f)
       expect(page).to have_content number_to_currency(100)
     end
 
